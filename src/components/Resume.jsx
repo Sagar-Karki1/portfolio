@@ -1,249 +1,355 @@
-import React from "react";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Cloud,
-  Terminal,
-  Database,
-  GitBranch,
-} from "lucide-react";
+import { Download, Briefcase, GraduationCap, Award } from "lucide-react";
 import Navbar from "./Navbar";
 
-export default function Resume() {
+const C = {
+  bg: "#0a0b0f",
+  surface: "#0d0f14",
+  border: "#1a1d27",
+  accent: "#f59e0b",
+  accentGlow: "rgba(245,158,11,0.1)",
+  text: "#e8eaf0",
+  muted: "#6b7590",
+};
+
+const experience = [
+  {
+    role: "DevOps Engineer (Learning)",
+    company: "100 Days of DevOps Challenge",
+    period: "Feb 2025 — Present",
+    desc: "Solving real-world infrastructure tasks daily on live servers in the KodeKloud Stratos Datacenter. Documenting every challenge, command, and lesson.",
+    tags: ["Linux", "SSH", "User Management", "Security"],
+  },
+  {
+    role: "Cloud & Infrastructure Intern",
+    company: "Your Company Here",
+    period: "2024",
+    desc: "Update this with your real experience. Add your internship, freelance work, or any relevant role you have held.",
+    tags: ["AWS", "Docker", "Terraform"],
+  },
+];
+
+const education = [
+  {
+    degree: "Your Degree",
+    school: "Your University",
+    period: "20XX — 20XX",
+    desc: "Update with your actual education details.",
+  },
+];
+
+const certifications = [
+  {
+    name: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    year: "2024",
+  },
+  { name: "Docker Certified Associate", issuer: "Docker Inc.", year: "2024" },
+  {
+    name: "Add your certifications",
+    issuer: "Certification Body",
+    year: "20XX",
+  },
+];
+
+const Resume = () => {
   return (
-    <div className="bg-gradient-to-br from-blue-200 to-indigo-300">
+    <div style={{ background: C.bg, minHeight: "100vh" }}>
       <Navbar />
-      <div className="max-w-7xl mx-auto bg-gray-100 shadow-2xl rounded-lg overflow-hidden">
-        <div className="p-8">
-          {/* Professional Summary */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-600 pb-2">
-              Professional Summary
-            </h2>
-            <p className="text-gray-700 leading-relaxed">
-              Motivated and detail-oriented aspiring DevOps Engineer with
-              hands-on experience in infrastructure automation using Terraform
-              and AWS services. Seeking a DevOps Internship to apply my skills
-              in cloud infrastructure, CI/CD, and infrastructure as code in a
-              real-world environment.
+      <div
+        style={{
+          maxWidth: "860px",
+          margin: "0 auto",
+          padding: "120px 40px 100px",
+        }}
+      >
+        {/* Header */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            marginBottom: "64px",
+            flexWrap: "wrap",
+            gap: "24px",
+          }}
+        >
+          <div>
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "12px",
+                fontWeight: 600,
+                color: C.accent,
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+                marginBottom: "16px",
+              }}
+            >
+              Resume
             </p>
-          </section>
-
-          {/* Technical Skills */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-600 pb-2">
-              Technical Skills
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex items-center mb-2">
-                  <Terminal className="w-5 h-5 text-blue-600 mr-2" />
-                  <h3 className="font-semibold text-gray-800">DevOps Tools</h3>
-                </div>
-                <p className="text-gray-700">
-                  Terraform, Git, GitHub, GitHub Actions
-                </p>
-              </div>
-
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex items-center mb-2">
-                  <Cloud className="w-5 h-5 text-blue-600 mr-2" />
-                  <h3 className="font-semibold text-gray-800">
-                    Cloud Platforms
-                  </h3>
-                </div>
-                <p className="text-gray-700">AWS, Azure</p>
-              </div>
-
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex items-center mb-2">
-                  <GitBranch className="w-5 h-5 text-blue-600 mr-2" />
-                  <h3 className="font-semibold text-gray-800">CI/CD</h3>
-                </div>
-                <p className="text-gray-700">
-                  GitHub Actions (basic), Shell scripting
-                </p>
-              </div>
-
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex items-center mb-2">
-                  <Database className="w-5 h-5 text-blue-600 mr-2" />
-                  <h3 className="font-semibold text-gray-800">Networking</h3>
-                </div>
-                <p className="text-gray-700">
-                  Subnets, Route Tables, NAT, Internet Gateway
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-blue-50 p-3 rounded-lg">
-                <h4 className="font-semibold text-gray-800 mb-1">
-                  Operating Systems
-                </h4>
-                <p className="text-sm text-gray-600">
-                  Linux (Amazon Linux, Ubuntu), Windows
-                </p>
-              </div>
-
-              <div className="bg-blue-50 p-3 rounded-lg">
-                <h4 className="font-semibold text-gray-800 mb-1">
-                  Version Control
-                </h4>
-                <p className="text-sm text-gray-600">Git, GitHub</p>
-              </div>
-
-              <div className="bg-blue-50 p-3 rounded-lg">
-                <h4 className="font-semibold text-gray-800 mb-1">Scripting</h4>
-                <p className="text-sm text-gray-600">Bash</p>
-              </div>
-            </div>
-
-            <div className="mt-4 bg-yellow-50 p-3 rounded-lg">
-              <h4 className="font-semibold text-gray-800 mb-1">
-                Additional Skills
-              </h4>
-              <p className="text-sm text-gray-600">
-                Docker (basic), Ansible (beginner)
-              </p>
-            </div>
-          </section>
-
-          {/* Projects */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-600 pb-2">
-              Projects
-            </h2>
-            <div className="bg-white border-l-4 border-blue-600 shadow-md rounded-lg p-6">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <h3 className="text-xl font-bold text-gray-800">
-                  AWS Infrastructure Automation with Terraform
-                </h3>
-                <div className="mt-2 md:mt-0">
-                  <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                    DevOps Engineer
-                  </span>
-                </div>
-              </div>
-
-              <div className="mb-4">
-                <p className="text-sm text-gray-600 mb-2">
-                  <strong>Tools:</strong> Terraform, AWS (EC2, VPC, IGW, Route
-                  Tables), Git
-                </p>
-              </div>
-
-              <ul className="space-y-2">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span className="text-gray-700">
-                    Created a custom VPC (10.25.0.0/16) with two public subnets
-                    in us-east-1a
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span className="text-gray-700">
-                    Automated provisioning of Internet Gateway, Route Table, and
-                    subnet associations
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span className="text-gray-700">
-                    Defined security groups to allow SSH and ICMP traffic and
-                    all outbound traffic
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span className="text-gray-700">
-                    Fetched the latest Amazon Linux 2023 AMI dynamically using
-                    Terraform data sources
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span className="text-gray-700">
-                    Deployed a t2.micro EC2 instance with a key pair and
-                    attached it to the public subnet
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span className="text-gray-700">
-                    Applied best practices in tagging, modular design, and
-                    infrastructure security
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          {/* Education */}
-          <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-600 pb-2">
-              Education & Credentials
-            </h2>
-            <div className="space-y-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <h3 className="font-bold text-gray-800">
-                      Cloud Architecture and Administration
-                    </h3>
-                    <p className="text-gray-600">
-                      Seneca College | Toronto, ON
-                    </p>
-                  </div>
-                  <div className="mt-2 md:mt-0">
-                    <span className="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded">
-                      2025
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <h3 className="font-bold text-gray-800">
-                      Cyber Security & Threat Management
-                    </h3>
-                    <p className="text-gray-600">
-                      Seneca College | Toronto, ON
-                    </p>
-                  </div>
-                  <div className="mt-2 md:mt-0">
-                    <span className="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded">
-                      2024
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <h3 className="font-bold text-gray-800">
-                      Bachelors in Computer Science & Information Technology
-                    </h3>
-                    <p className="text-gray-600">
-                      Tribhuwan University | Kathmandu, Nepal
-                    </p>
-                  </div>
-                  <div className="mt-2 md:mt-0">
-                    <span className="bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded">
-                      2022
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+            <h1
+              style={{
+                fontFamily: "'Syne', sans-serif",
+                fontSize: "clamp(36px, 5vw, 50px)",
+                fontWeight: 800,
+                color: C.text,
+                letterSpacing: "-1.5px",
+                lineHeight: 1.1,
+                marginBottom: "12px",
+              }}
+            >
+              Sagar Karki
+            </h1>
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "16px",
+                color: C.muted,
+              }}
+            >
+              Cloud Engineer & DevOps Associate
+            </p>
+          </div>
+          <a
+            href="#"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              fontFamily: "'DM Sans', sans-serif",
+              fontWeight: 600,
+              fontSize: "14px",
+              padding: "13px 24px",
+              background: C.accent,
+              color: "#0a0b0f",
+              borderRadius: "8px",
+              textDecoration: "none",
+              transition: "background 0.2s",
+              alignSelf: "flex-start",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "#fbbf24")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = C.accent)}
+          >
+            <Download size={16} /> Download PDF
+          </a>
         </div>
+
+        {/* Experience */}
+        <Section icon={<Briefcase size={18} />} title="Experience">
+          {experience.map((e, i) => (
+            <TimelineItem
+              key={i}
+              title={e.role}
+              subtitle={e.company}
+              period={e.period}
+              desc={e.desc}
+              tags={e.tags}
+            />
+          ))}
+        </Section>
+
+        {/* Education */}
+        <Section icon={<GraduationCap size={18} />} title="Education">
+          {education.map((e, i) => (
+            <TimelineItem
+              key={i}
+              title={e.degree}
+              subtitle={e.school}
+              period={e.period}
+              desc={e.desc}
+            />
+          ))}
+        </Section>
+
+        {/* Certifications */}
+        <Section icon={<Award size={18} />} title="Certifications">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: "14px",
+            }}
+          >
+            {certifications.map((cert, i) => (
+              <div
+                key={i}
+                style={{
+                  padding: "18px 20px",
+                  background: C.bg,
+                  border: `1px solid ${C.border}`,
+                  borderRadius: "10px",
+                  transition: "border-color 0.2s",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.borderColor = "rgba(245,158,11,0.3)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.borderColor = C.border)
+                }
+              >
+                <div
+                  style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    color: C.text,
+                    marginBottom: "6px",
+                  }}
+                >
+                  {cert.name}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "12px",
+                    color: C.muted,
+                  }}
+                >
+                  {cert.issuer}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: "11px",
+                    color: C.accent,
+                    marginTop: "8px",
+                  }}
+                >
+                  {cert.year}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
       </div>
     </div>
   );
-}
+};
+
+const Section = ({ icon, title, children }) => (
+  <div style={{ marginBottom: "56px" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+        marginBottom: "28px",
+        paddingBottom: "16px",
+        borderBottom: `1px solid ${C.border}`,
+      }}
+    >
+      <span style={{ color: C.accent }}>{icon}</span>
+      <h2
+        style={{
+          fontFamily: "'Syne', sans-serif",
+          fontSize: "20px",
+          fontWeight: 700,
+          color: C.text,
+          margin: 0,
+        }}
+      >
+        {title}
+      </h2>
+    </div>
+    {children}
+  </div>
+);
+
+const TimelineItem = ({ title, subtitle, period, desc, tags }) => (
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "20px 1fr",
+      gap: "16px",
+      marginBottom: "28px",
+      paddingBottom: "28px",
+      borderBottom: `1px solid ${C.border}`,
+    }}
+  >
+    <div style={{ paddingTop: "6px" }}>
+      <div
+        style={{
+          width: "8px",
+          height: "8px",
+          borderRadius: "50%",
+          background: C.accent,
+        }}
+      />
+    </div>
+    <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "8px",
+          marginBottom: "4px",
+        }}
+      >
+        <h3
+          style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: "17px",
+            fontWeight: 700,
+            color: C.text,
+            margin: 0,
+          }}
+        >
+          {title}
+        </h3>
+        <span
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: "12px",
+            color: C.accent,
+          }}
+        >
+          {period}
+        </span>
+      </div>
+      <div
+        style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "13px",
+          color: C.muted,
+          marginBottom: "10px",
+        }}
+      >
+        {subtitle}
+      </div>
+      <p
+        style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "14px",
+          color: "#8892a8",
+          lineHeight: 1.7,
+          marginBottom: tags ? "14px" : 0,
+        }}
+      >
+        {desc}
+      </p>
+      {tags && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "7px" }}>
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "11px",
+                color: C.accent,
+                background: C.accentGlow,
+                border: "1px solid rgba(245,158,11,0.18)",
+                padding: "3px 9px",
+                borderRadius: "999px",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+export default Resume;
