@@ -1,359 +1,461 @@
-// src/components/Projects.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import ProjectCard from "./ProjectCard";
 import { Filter, Search, Grid, List, Star, Calendar } from "lucide-react";
+import Navbar from "./Navbar";
+
+const C = {
+  bg: "#0a0b0f",
+  surface: "#0d0f14",
+  border: "#1a1d27",
+  accent: "#f59e0b",
+  accentGlow: "rgba(245,158,11,0.1)",
+  text: "#e8eaf0",
+  muted: "#6b7590",
+};
+
+const projects = [
+  {
+    id: 1,
+    title: "100 Days of DevOps",
+    description:
+      "A daily challenge series solving real-world DevOps tasks on live servers — documenting every command, concept, and lesson learned along the way.",
+    techStack: ["Linux", "Docker", "Kubernetes", "AWS", "CI/CD"],
+    githubLink: "https://github.com/Sagar-Karki1",
+    liveLink: null,
+    image:
+      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=400&h=200&fit=crop",
+    category: "DevOps",
+    status: "In Progress",
+    featured: true,
+    date: "2025",
+  },
+  {
+    id: 2,
+    title: "AI-Powered Task Manager",
+    description:
+      "A smart task management application with AI-driven prioritization and natural language processing. Built with modern React and OpenAI integration.",
+    techStack: ["React", "Node.js", "OpenAI", "MongoDB", "Tailwind"],
+    githubLink: "https://github.com/yourproject",
+    liveLink: "https://yourproject.com",
+    image:
+      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=200&fit=crop",
+    category: "Full Stack",
+    status: "Completed",
+    featured: true,
+    date: "2024",
+  },
+  {
+    id: 3,
+    title: "E-commerce Dashboard",
+    description:
+      "Modern admin dashboard for e-commerce management with real-time analytics, inventory tracking, and comprehensive sales reporting.",
+    techStack: ["Vue.js", "Express", "PostgreSQL", "Chart.js", "Stripe API"],
+    githubLink: "https://github.com/yourproject2",
+    liveLink: "https://yourproject2.com",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop",
+    category: "Web App",
+    status: "In Progress",
+    featured: false,
+    date: "2024",
+  },
+  {
+    id: 4,
+    title: "Real-time Chat Application",
+    description:
+      "Secure messaging platform with end-to-end encryption, file sharing, and group chat. Supports thousands of concurrent users.",
+    techStack: ["React", "Socket.io", "Express", "MongoDB", "Redis"],
+    githubLink: "https://github.com/yourproject4",
+    liveLink: "https://yourchat.com",
+    image:
+      "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=400&h=200&fit=crop",
+    category: "Web App",
+    status: "Completed",
+    featured: false,
+    date: "2023",
+  },
+  {
+    id: 5,
+    title: "Data Visualization Tool",
+    description:
+      "Interactive data visualization platform supporting CSV, JSON, and API data imports with real-time updates and custom dashboards.",
+    techStack: ["D3.js", "Python", "Flask", "PostgreSQL", "Docker", "AWS"],
+    githubLink: "https://github.com/yourproject5",
+    liveLink: null,
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop",
+    category: "Data Science",
+    status: "In Progress",
+    featured: false,
+    date: "2024",
+  },
+  {
+    id: 6,
+    title: "Blockchain Voting System",
+    description:
+      "Secure voting system built on blockchain with smart contracts and decentralized architecture — ensuring voter privacy with full transparency.",
+    techStack: ["Solidity", "Web3.js", "React", "Truffle", "IPFS"],
+    githubLink: "https://github.com/yourproject6",
+    liveLink: "https://yourvoting.com",
+    image:
+      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=200&fit=crop",
+    category: "Blockchain",
+    status: "Completed",
+    featured: true,
+    date: "2024",
+  },
+];
+
+const inputStyle = {
+  fontFamily: "'DM Sans', sans-serif",
+  fontSize: "14px",
+  background: C.surface,
+  border: `1px solid ${C.border}`,
+  color: C.text,
+  borderRadius: "8px",
+  outline: "none",
+  transition: "border-color 0.2s",
+};
 
 const Projects = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [viewMode, setViewMode] = useState("grid");
 
-  // Your project data - replace with your actual projects
-  const projects = [
-    {
-      id: 1,
-      title: "AI-Powered Task Manager",
-      description:
-        "A smart task management application with AI-driven prioritization, natural language processing, and intelligent scheduling features. Built with modern React architecture and integrated with OpenAI's GPT for intelligent task suggestions.",
-      techStack: [
-        "React",
-        "Node.js",
-        "OpenAI",
-        "MongoDB",
-        "Tailwind CSS",
-        "JWT",
-      ],
-      link: "https://github.com/yourproject",
-      githubLink: "https://github.com/yourproject",
-      liveLink: "https://yourproject.com",
-      image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=200&fit=crop",
-      category: "Full Stack",
-      status: "Completed",
-      featured: true,
-      date: "2024",
-      duration: "3 months",
-    },
-    {
-      id: 2,
-      title: "E-commerce Dashboard",
-      description:
-        "Modern admin dashboard for e-commerce management with real-time analytics, inventory tracking, and comprehensive sales reporting. Features include drag-and-drop interface and advanced filtering.",
-      techStack: ["Vue.js", "Express", "PostgreSQL", "Chart.js", "Stripe API"],
-      link: "https://github.com/yourproject2",
-      githubLink: "https://github.com/yourproject2",
-      liveLink: "https://yourproject2.com",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop",
-      category: "Web App",
-      status: "In Progress",
-      featured: false,
-      date: "2024",
-      duration: "2 months",
-    },
-    {
-      id: 3,
-      title: "Mobile Fitness Tracker",
-      description:
-        "Cross-platform mobile app for fitness tracking with workout plans, progress monitoring, and social features. Includes offline mode and wearable device integration.",
-      techStack: ["React Native", "Firebase", "Redux", "Expo", "TypeScript"],
-      link: "https://github.com/yourproject3",
-      githubLink: "https://github.com/yourproject3",
-      liveLink: null,
-      image:
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop",
-      category: "Mobile App",
-      status: "Completed",
-      featured: true,
-      date: "2023",
-      duration: "4 months",
-    },
-    {
-      id: 4,
-      title: "Real-time Chat Application",
-      description:
-        "Secure messaging platform with end-to-end encryption, file sharing, and group chat capabilities. Built with scalable architecture supporting thousands of concurrent users.",
-      techStack: ["React", "Socket.io", "Express", "MongoDB", "JWT", "Redis"],
-      link: "https://github.com/yourproject4",
-      githubLink: "https://github.com/yourproject4",
-      liveLink: "https://yourchat.com",
-      image:
-        "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=400&h=200&fit=crop",
-      category: "Web App",
-      status: "Completed",
-      featured: false,
-      date: "2023",
-      duration: "6 weeks",
-    },
-    {
-      id: 5,
-      title: "Data Visualization Tool",
-      description:
-        "Interactive data visualization platform for creating charts, graphs, and dashboards from various data sources. Supports CSV, JSON, and API data imports with real-time updates.",
-      techStack: ["D3.js", "Python", "Flask", "PostgreSQL", "Docker", "AWS"],
-      link: "https://github.com/yourproject5",
-      githubLink: "https://github.com/yourproject5",
-      liveLink: null,
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop",
-      category: "Data Science",
-      status: "In Progress",
-      featured: false,
-      date: "2024",
-      duration: "2 months",
-    },
-    {
-      id: 6,
-      title: "Blockchain Voting System",
-      description:
-        "Secure and transparent voting system built on blockchain technology with smart contracts and decentralized architecture. Ensures voter privacy while maintaining transparency.",
-      techStack: ["Solidity", "Web3.js", "React", "Truffle", "Ganache", "IPFS"],
-      link: "https://github.com/yourproject6",
-      githubLink: "https://github.com/yourproject6",
-      liveLink: "https://yourvoting.com",
-      image:
-        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=200&fit=crop",
-      category: "Blockchain",
-      status: "Completed",
-      featured: true,
-      date: "2024",
-      duration: "5 months",
-    },
-    {
-      id: 7,
-      title: "Weather Forecast App",
-      description:
-        "Beautiful weather application with 7-day forecasts, interactive maps, and severe weather alerts. Features location-based suggestions and historical weather data.",
-      techStack: ["React", "OpenWeatherMap API", "Mapbox", "Chart.js", "PWA"],
-      link: "https://github.com/yourproject7",
-      githubLink: "https://github.com/yourproject7",
-      liveLink: "https://yourweather.com",
-      image:
-        "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=200&fit=crop",
-      category: "Web App",
-      status: "Completed",
-      featured: false,
-      date: "2023",
-      duration: "1 month",
-    },
-    {
-      id: 8,
-      title: "Recipe Sharing Platform",
-      description:
-        "Social platform for sharing and discovering recipes with advanced search, meal planning, and shopping list generation. Includes user ratings and cooking timers.",
-      techStack: ["Next.js", "MongoDB", "Cloudinary", "Stripe", "NextAuth"],
-      link: "https://github.com/yourproject8",
-      githubLink: "https://github.com/yourproject8",
-      liveLink: "https://yourrecipes.com",
-      image:
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=200&fit=crop",
-      category: "Full Stack",
-      status: "In Progress",
-      featured: false,
-      date: "2024",
-      duration: "3 months",
-    },
-  ];
+  const categories = ["All", ...new Set(projects.map((p) => p.category))];
 
-  // Get unique categories
-  const categories = [
-    "All",
-    ...new Set(projects.map((project) => project.category)),
-  ];
-
-  // Filter projects based on search and category
-  const filteredProjects = projects.filter((project) => {
-    const matchesSearch =
-      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.techStack.some((tech) =>
-        tech.toLowerCase().includes(searchTerm.toLowerCase())
+  const filtered = projects.filter((p) => {
+    const matchSearch =
+      p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.techStack.some((t) =>
+        t.toLowerCase().includes(searchTerm.toLowerCase()),
       );
-
-    const matchesCategory =
-      selectedCategory === "All" || project.category === selectedCategory;
-
-    return matchesSearch && matchesCategory;
+    const matchCat =
+      selectedCategory === "All" || p.category === selectedCategory;
+    return matchSearch && matchCat;
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            My Projects
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A collection of my latest work, creative solutions, and technical
-            challenges I've tackled.
+    <div style={{ background: C.bg, minHeight: "100vh" }}>
+      <Navbar />
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "120px 40px 100px",
+        }}
+      >
+        {/* Header */}
+        <div style={{ marginBottom: "48px" }}>
+          <p
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: C.accent,
+              textTransform: "uppercase",
+              letterSpacing: "2px",
+              marginBottom: "16px",
+            }}
+          >
+            Projects
           </p>
-          <div className="flex justify-center items-center gap-4 mt-6">
-            <div className="flex items-center gap-2 text-yellow-600">
-              <Star className="w-5 h-5 fill-current" />
-              <span className="text-sm font-medium">Featured Projects</span>
-            </div>
-            <div className="w-px h-4 bg-gray-300"></div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <Calendar className="w-5 h-5" />
-              <span className="text-sm">{new Date().getFullYear()}</span>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-end",
+              flexWrap: "wrap",
+              gap: "16px",
+            }}
+          >
+            <h1
+              style={{
+                fontFamily: "'Syne', sans-serif",
+                fontSize: "clamp(36px, 5vw, 52px)",
+                fontWeight: 800,
+                color: C.text,
+                letterSpacing: "-1.5px",
+              }}
+            >
+              What I'm building.
+            </h1>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Star size={15} style={{ color: C.accent }} />
+              <span
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "13px",
+                  color: C.muted,
+                }}
+              >
+                {new Date().getFullYear()}
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Controls Section */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search projects..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-              />
+        {/* Stats */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: "14px",
+            marginBottom: "32px",
+          }}
+        >
+          {[
+            { val: projects.length, label: "Total", color: C.accent },
+            {
+              val: projects.filter((p) => p.status === "Completed").length,
+              label: "Completed",
+              color: "#22c55e",
+            },
+            {
+              val: projects.filter((p) => p.status === "In Progress").length,
+              label: "In Progress",
+              color: "#f97316",
+            },
+            {
+              val: new Set(projects.flatMap((p) => p.techStack)).size,
+              label: "Technologies",
+              color: "#818cf8",
+            },
+          ].map(({ val, label, color }) => (
+            <div
+              key={label}
+              style={{
+                padding: "18px",
+                background: C.surface,
+                border: `1px solid ${C.border}`,
+                borderRadius: "10px",
+                textAlign: "center",
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: "28px",
+                  fontWeight: 800,
+                  color,
+                  marginBottom: "4px",
+                }}
+              >
+                {val}
+              </div>
+              <div
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "12px",
+                  color: C.muted,
+                }}
+              >
+                {label}
+              </div>
             </div>
+          ))}
+        </div>
 
-            {/* Category Filter */}
-            <div className="flex items-center gap-2">
-              <Filter className="text-gray-500 w-5 h-5" />
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
+        {/* Controls */}
+        <div
+          style={{
+            padding: "20px 24px",
+            background: C.surface,
+            border: `1px solid ${C.border}`,
+            borderRadius: "12px",
+            marginBottom: "36px",
+            display: "flex",
+            gap: "16px",
+            flexWrap: "wrap",
+            alignItems: "center",
+          }}
+        >
+          {/* Search */}
+          <div style={{ position: "relative", flex: "1", minWidth: "200px" }}>
+            <Search
+              size={16}
+              style={{
+                position: "absolute",
+                left: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: C.muted,
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Search projects..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{
+                ...inputStyle,
+                width: "100%",
+                padding: "10px 12px 10px 36px",
+              }}
+              onFocus={(e) => (e.target.style.borderColor = C.accent)}
+              onBlur={(e) => (e.target.style.borderColor = C.border)}
+            />
+          </div>
 
-            {/* View Mode Toggle */}
-            <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-xl">
+          {/* Category */}
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Filter size={15} style={{ color: C.muted }} />
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              style={{ ...inputStyle, padding: "10px 14px", cursor: "pointer" }}
+            >
+              {categories.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* View toggle */}
+          <div
+            style={{
+              display: "flex",
+              background: C.bg,
+              border: `1px solid ${C.border}`,
+              borderRadius: "8px",
+              overflow: "hidden",
+            }}
+          >
+            {[
+              { mode: "grid", Icon: Grid },
+              { mode: "list", Icon: List },
+            ].map(({ mode, Icon }) => (
               <button
-                onClick={() => setViewMode("grid")}
-                className={`p-2 rounded-lg transition-all ${
-                  viewMode === "grid"
-                    ? "bg-white shadow-sm text-blue-600"
-                    : "text-gray-500 hover:text-gray-700"
-                }`}
+                key={mode}
+                onClick={() => setViewMode(mode)}
+                style={{
+                  padding: "8px 12px",
+                  background: viewMode === mode ? C.accentGlow : "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  color: viewMode === mode ? C.accent : C.muted,
+                  transition: "all 0.2s",
+                  display: "flex",
+                  alignItems: "center",
+                }}
               >
-                <Grid className="w-5 h-5" />
+                <Icon size={16} />
               </button>
-              <button
-                onClick={() => setViewMode("list")}
-                className={`p-2 rounded-lg transition-all ${
-                  viewMode === "list"
-                    ? "bg-white shadow-sm text-blue-600"
-                    : "text-gray-500 hover:text-gray-700"
-                }`}
-              >
-                <List className="w-5 h-5" />
-              </button>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Featured Projects Section */}
+        {/* Featured */}
         {projects.filter((p) => p.featured).length > 0 && (
-          <div className="mb-12">
-            <div className="flex items-center gap-2 mb-6">
-              <Star className="w-6 h-6 text-yellow-600 fill-current" />
-              <h2 className="text-2xl font-bold text-gray-900">
-                Featured Projects
+          <div style={{ marginBottom: "48px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                marginBottom: "24px",
+              }}
+            >
+              <Star size={18} style={{ color: C.accent }} />
+              <h2
+                style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: "20px",
+                  fontWeight: 700,
+                  color: C.text,
+                  margin: 0,
+                }}
+              >
+                Featured
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "20px",
+              }}
+            >
               {projects
                 .filter((p) => p.featured)
-                .map((project) => (
-                  <ProjectCard
-                    key={`featured-${project.id}`}
-                    project={project}
-                  />
+                .map((p) => (
+                  <ProjectCard key={`f-${p.id}`} project={p} />
                 ))}
             </div>
           </div>
         )}
 
-        {/* All Projects Section */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            All Projects
-          </h2>
-        </div>
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1">
-              {projects.length}
-            </div>
-            <div className="text-gray-600 text-sm">Total Projects</div>
-          </div>
-          <div className="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-2xl md:text-3xl font-bold text-green-600 mb-1">
-              {projects.filter((p) => p.status === "Completed").length}
-            </div>
-            <div className="text-gray-600 text-sm">Completed</div>
-          </div>
-          <div className="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-2xl md:text-3xl font-bold text-orange-600 mb-1">
-              {projects.filter((p) => p.status === "In Progress").length}
-            </div>
-            <div className="text-gray-600 text-sm">In Progress</div>
-          </div>
-          <div className="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-2xl md:text-3xl font-bold text-purple-600 mb-1">
-              {new Set(projects.flatMap((p) => p.techStack)).size}
-            </div>
-            <div className="text-gray-600 text-sm">Technologies</div>
-          </div>
-        </div>
-
-        {/* Projects Grid/List */}
-        <div
-          className={`grid gap-6 ${
-            viewMode === "grid"
-              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-              : "grid-cols-1 max-w-4xl mx-auto"
-          }`}
+        {/* All projects */}
+        <h2
+          style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: "20px",
+            fontWeight: 700,
+            color: C.text,
+            marginBottom: "24px",
+          }}
         >
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+          All Projects
+        </h2>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              viewMode === "grid"
+                ? "repeat(auto-fit, minmax(280px, 1fr))"
+                : "1fr",
+            gap: "20px",
+          }}
+        >
+          {filtered.map((p) => (
+            <ProjectCard key={p.id} project={p} />
           ))}
         </div>
 
-        {/* Empty State */}
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-16">
-            <div className="text-8xl mb-6">🔍</div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+        {/* Empty state */}
+        {filtered.length === 0 && (
+          <div style={{ textAlign: "center", padding: "80px 32px" }}>
+            <div style={{ fontSize: "48px", marginBottom: "16px" }}>🔍</div>
+            <h3
+              style={{
+                fontFamily: "'Syne', sans-serif",
+                fontSize: "22px",
+                color: C.text,
+                marginBottom: "10px",
+              }}
+            >
               No projects found
             </h3>
-            <p className="text-gray-600 mb-6">
-              Try adjusting your search or filter criteria
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                color: C.muted,
+                marginBottom: "24px",
+              }}
+            >
+              Try adjusting your search or filter
             </p>
             <button
               onClick={() => {
                 setSearchTerm("");
                 setSelectedCategory("All");
               }}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 600,
+                fontSize: "14px",
+                padding: "10px 24px",
+                background: C.accent,
+                color: "#0a0b0f",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+              }}
             >
               Clear Filters
-            </button>
-          </div>
-        )}
-
-        {/* Load More Button (if you want to implement pagination) */}
-        {filteredProjects.length > 0 && filteredProjects.length >= 6 && (
-          <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-medium">
-              Load More Projects
             </button>
           </div>
         )}

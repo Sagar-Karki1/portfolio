@@ -1,204 +1,331 @@
-import React from "react";
 import {
   Cloud,
   Server,
   Code,
   Database,
-  GitBranch,
-  Monitor,
+  Settings,
   Shield,
   Zap,
   Container,
-  Settings,
+  Monitor,
 } from "lucide-react";
 import Navbar from "./Navbar";
 
+const C = {
+  bg: "#0a0b0f",
+  surface: "#0d0f14",
+  border: "#1a1d27",
+  accent: "#f59e0b",
+  accentGlow: "rgba(245,158,11,0.1)",
+  text: "#e8eaf0",
+  muted: "#6b7590",
+};
+
+const skillCategories = [
+  {
+    title: "Cloud Platforms",
+    icon: <Cloud size={22} />,
+    skills: [
+      { name: "AWS", level: 85 },
+      { name: "Azure", level: 75 },
+      { name: "Google Cloud", level: 70 },
+      { name: "DigitalOcean", level: 80 },
+    ],
+  },
+  {
+    title: "DevOps Tools",
+    icon: <Settings size={22} />,
+    skills: [
+      { name: "Docker", level: 90 },
+      { name: "Kubernetes", level: 85 },
+      { name: "Jenkins", level: 80 },
+      { name: "GitLab CI/CD", level: 85 },
+    ],
+  },
+  {
+    title: "Infrastructure as Code",
+    icon: <Server size={22} />,
+    skills: [
+      { name: "Terraform", level: 88 },
+      { name: "Ansible", level: 82 },
+      { name: "CloudFormation", level: 75 },
+      { name: "Pulumi", level: 65 },
+    ],
+  },
+  {
+    title: "Programming Languages",
+    icon: <Code size={22} />,
+    skills: [
+      { name: "Python", level: 90 },
+      { name: "Bash", level: 88 },
+      { name: "JavaScript", level: 85 },
+      { name: "Go", level: 75 },
+    ],
+  },
+  {
+    title: "Databases",
+    icon: <Database size={22} />,
+    skills: [
+      { name: "PostgreSQL", level: 85 },
+      { name: "MySQL", level: 80 },
+      { name: "MongoDB", level: 75 },
+      { name: "Redis", level: 82 },
+    ],
+  },
+  {
+    title: "Monitoring & Security",
+    icon: <Shield size={22} />,
+    skills: [
+      { name: "Prometheus", level: 85 },
+      { name: "Grafana", level: 80 },
+      { name: "ELK Stack", level: 78 },
+      { name: "Vault", level: 70 },
+    ],
+  },
+];
+
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Cloud Platforms",
-      icon: <Cloud className="w-8 h-8" />,
-      skills: [
-        { name: "AWS", level: 85, color: "bg-orange-500" },
-        { name: "Azure", level: 75, color: "bg-blue-500" },
-        { name: "Google Cloud", level: 70, color: "bg-green-500" },
-        { name: "DigitalOcean", level: 80, color: "bg-blue-400" },
-      ],
-    },
-    {
-      title: "DevOps Tools",
-      icon: <Settings className="w-8 h-8" />,
-      skills: [
-        { name: "Docker", level: 90, color: "bg-blue-600" },
-        { name: "Kubernetes", level: 85, color: "bg-indigo-500" },
-        { name: "Jenkins", level: 80, color: "bg-red-500" },
-        { name: "GitLab CI/CD", level: 85, color: "bg-orange-600" },
-      ],
-    },
-    {
-      title: "Infrastructure as Code",
-      icon: <Server className="w-8 h-8" />,
-      skills: [
-        { name: "Terraform", level: 88, color: "bg-purple-500" },
-        { name: "Ansible", level: 82, color: "bg-red-600" },
-        { name: "CloudFormation", level: 75, color: "bg-orange-500" },
-        { name: "Pulumi", level: 65, color: "bg-indigo-400" },
-      ],
-    },
-    {
-      title: "Programming Languages",
-      icon: <Code className="w-8 h-8" />,
-      skills: [
-        { name: "Python", level: 90, color: "bg-yellow-500" },
-        { name: "JavaScript", level: 85, color: "bg-yellow-400" },
-        { name: "Go", level: 75, color: "bg-cyan-500" },
-        { name: "Bash", level: 88, color: "bg-gray-600" },
-      ],
-    },
-    {
-      title: "Databases",
-      icon: <Database className="w-8 h-8" />,
-      skills: [
-        { name: "PostgreSQL", level: 85, color: "bg-blue-600" },
-        { name: "MySQL", level: 80, color: "bg-orange-500" },
-        { name: "MongoDB", level: 75, color: "bg-green-500" },
-        { name: "Redis", level: 82, color: "bg-red-500" },
-      ],
-    },
-    {
-      title: "Monitoring & Security",
-      icon: <Shield className="w-8 h-8" />,
-      skills: [
-        { name: "Prometheus", level: 85, color: "bg-orange-500" },
-        { name: "Grafana", level: 80, color: "bg-orange-400" },
-        { name: "ELK Stack", level: 78, color: "bg-yellow-600" },
-        { name: "Vault", level: 70, color: "bg-gray-700" },
-      ],
-    },
-  ];
-
   return (
-    <div className="bg-gradient-to-br from-blue-200 to-indigo-300">
+    <div style={{ background: C.bg, minHeight: "100vh" }}>
       <Navbar />
-      <div className="min-h-screen  py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Header Section */}
-          <div className="mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-br from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Technical Skills
-              </span>
-            </h2>
-            <p className="text-lg text-gray-600">
-              Comprehensive expertise in cloud technologies, DevOps practices,
-              and modern development tools to build scalable, reliable, and
-              secure infrastructure solutions.
-            </p>
-          </div>
-
-          {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {skillCategories.map((category, categoryIndex) => (
-              <div
-                key={categoryIndex}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100"
-              >
-                {/* Category Header */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-lg text-blue-600">
-                    {category.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {category.title}
-                  </h3>
-                </div>
-
-                {/* Skills List */}
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">
-                          {skill.name}
-                        </span>
-                        <span className="text-sm font-semibold text-gray-500">
-                          {skill.level}%
-                        </span>
-                      </div>
-
-                      {/* Progress Bar */}
-                      <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                        <div
-                          className={`h-full ${skill.color} rounded-full transition-all duration-1000 ease-out`}
-                          style={{
-                            width: `${skill.level}%`,
-                            animation: `slideIn 1.5s ease-out ${
-                              skillIndex * 0.1
-                            }s both`,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Additional Info Section */}
-          <div className="mt-16 text-center">
-            <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto border border-gray-100">
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="p-4 bg-gradient-to-br from-green-100 to-emerald-100 rounded-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <Zap className="w-8 h-8 text-green-600" />
-                  </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">
-                    Fast Deployment
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Automated CI/CD pipelines for rapid, reliable deployments
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="p-4 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <Container className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">
-                    Containerization
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Expert in Docker and Kubernetes orchestration
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="p-4 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <Monitor className="w-8 h-8 text-purple-600" />
-                  </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">
-                    Monitoring
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Comprehensive observability and performance tracking
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "120px 40px 100px",
+        }}
+      >
+        {/* Header */}
+        <div style={{ marginBottom: "64px" }}>
+          <p
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: C.accent,
+              textTransform: "uppercase",
+              letterSpacing: "2px",
+              marginBottom: "16px",
+            }}
+          >
+            Skills
+          </p>
+          <h1
+            style={{
+              fontFamily: "'Syne', sans-serif",
+              fontSize: "clamp(36px, 5vw, 52px)",
+              fontWeight: 800,
+              color: C.text,
+              letterSpacing: "-1.5px",
+              marginBottom: "16px",
+            }}
+          >
+            The toolkit.
+          </h1>
+          <p
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "16px",
+              color: C.muted,
+              maxWidth: "520px",
+              lineHeight: 1.7,
+            }}
+          >
+            Actively building across cloud, containers, IaC, and observability.
+            Honestly leveling up every single day.
+          </p>
         </div>
 
-        <style jsx>{`
-          @keyframes slideIn {
-            from {
-              width: 0%;
-            }
-            to {
-              width: var(--target-width);
-            }
-          }
-        `}</style>
+        {/* Grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "20px",
+            marginBottom: "60px",
+          }}
+        >
+          {skillCategories.map((cat, ci) => (
+            <div
+              key={ci}
+              style={{
+                padding: "28px",
+                background: C.surface,
+                border: `1px solid ${C.border}`,
+                borderRadius: "14px",
+                transition: "border-color 0.2s",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.borderColor = "rgba(245,158,11,0.25)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.borderColor = C.border)
+              }
+            >
+              {/* Category header */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  marginBottom: "24px",
+                }}
+              >
+                <div
+                  style={{
+                    padding: "8px",
+                    background: C.accentGlow,
+                    border: "1px solid rgba(245,158,11,0.2)",
+                    borderRadius: "8px",
+                    color: C.accent,
+                    display: "flex",
+                  }}
+                >
+                  {cat.icon}
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "16px",
+                    color: C.text,
+                    margin: 0,
+                  }}
+                >
+                  {cat.title}
+                </h3>
+              </div>
+
+              {/* Skills */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "18px",
+                }}
+              >
+                {cat.skills.map((skill, si) => (
+                  <div key={si}>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "'DM Sans', sans-serif",
+                          fontSize: "14px",
+                          fontWeight: 500,
+                          color: "#c8ccd8",
+                        }}
+                      >
+                        {skill.name}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "'JetBrains Mono', monospace",
+                          fontSize: "12px",
+                          color: C.accent,
+                        }}
+                      >
+                        {skill.level}%
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        height: "3px",
+                        background: C.border,
+                        borderRadius: "999px",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <div
+                        style={{
+                          height: "100%",
+                          width: `${skill.level}%`,
+                          background: `linear-gradient(90deg, ${C.accent}, #fbbf24)`,
+                          borderRadius: "999px",
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Summary row */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "16px",
+          }}
+        >
+          {[
+            {
+              icon: <Zap size={20} />,
+              title: "Fast Deployment",
+              desc: "Automated CI/CD pipelines for rapid, reliable deployments",
+            },
+            {
+              icon: <Container size={20} />,
+              title: "Containerization",
+              desc: "Expert in Docker and Kubernetes orchestration",
+            },
+            {
+              icon: <Monitor size={20} />,
+              title: "Monitoring",
+              desc: "Comprehensive observability and performance tracking",
+            },
+          ].map(({ icon, title, desc }) => (
+            <div
+              key={title}
+              style={{
+                padding: "24px",
+                background: C.surface,
+                border: `1px solid ${C.border}`,
+                borderRadius: "12px",
+                textAlign: "center",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginBottom: "12px",
+                  color: C.accent,
+                }}
+              >
+                {icon}
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "15px",
+                  color: C.text,
+                  marginBottom: "8px",
+                }}
+              >
+                {title}
+              </div>
+              <div
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "13px",
+                  color: C.muted,
+                  lineHeight: 1.6,
+                }}
+              >
+                {desc}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

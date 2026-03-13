@@ -1,64 +1,336 @@
-import { Download, Eye } from "lucide-react";
+import { Download, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import profileImage from "../assets/profile.png";
 
-export default function HeroSection() {
+const C = {
+  bg: "#0a0b0f",
+  surface: "#0d0f14",
+  border: "#1a1d27",
+  accent: "#f59e0b",
+  text: "#e8eaf0",
+  muted: "#6b7590",
+};
+
+export default function Hero() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              <span className="bg-gradient-to-br from-slate-600 to-blue-500 bg-clip-text text-transparent">
-                Cloud Engineer
-              </span>
-              <br />
-              & DevOps
-              <br />
-              Associate
-            </h1>
+    <section
+      style={{
+        minHeight: "100vh",
+        background: C.bg,
+        position: "relative",
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      {/* Grid bg */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: `linear-gradient(${C.border} 1px, transparent 1px), linear-gradient(90deg, ${C.border} 1px, transparent 1px)`,
+          backgroundSize: "64px 64px",
+          opacity: 0.4,
+          pointerEvents: "none",
+        }}
+      />
 
-            <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-              Building scalable infrastructure and automating deployment
-              pipelines for modern applications. Passionate about cloud
-              technologies and continuous integration.
-            </p>
+      {/* Amber glow */}
+      <div
+        style={{
+          position: "absolute",
+          top: "15%",
+          right: "8%",
+          width: "500px",
+          height: "500px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 65%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "10%",
+          left: "5%",
+          width: "300px",
+          height: "300px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 65%)",
+          pointerEvents: "none",
+        }}
+      />
 
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 flex items-center gap-2 font-medium shadow-lg hover:shadow-xl">
-                <Download size={20} />
-                Download CV
-              </button>
-              <button className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200 flex items-center gap-2 font-medium">
-                <Eye size={20} />
-                View Projects
-              </button>
-            </div>
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "120px 48px 80px",
+          width: "100%",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "80px",
+          alignItems: "center",
+          position: "relative",
+        }}
+        className="hero-grid"
+      >
+        {/* Left */}
+        <div>
+          {/* Badge */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              background: "rgba(245,158,11,0.1)",
+              border: "1px solid rgba(245,158,11,0.25)",
+              borderRadius: "999px",
+              padding: "6px 16px",
+              marginBottom: "32px",
+            }}
+          >
+            <span
+              style={{
+                width: "7px",
+                height: "7px",
+                borderRadius: "50%",
+                background: C.accent,
+                display: "inline-block",
+                animation: "pulse 2s infinite",
+              }}
+            />
+            <span
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "12px",
+                color: C.accent,
+                fontWeight: 600,
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+              }}
+            >
+              Available for opportunities
+            </span>
           </div>
 
-          {/* Right Image */}
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src={profileImage}
-                alt="DevOps Engineer working with multiple monitors showing cloud infrastructure dashboards"
-                className="w-full h-auto object-cover"
-              />
+          <h1
+            style={{
+              fontFamily: "'Syne', sans-serif",
+              fontSize: "clamp(42px, 5.5vw, 70px)",
+              fontWeight: 800,
+              color: C.text,
+              lineHeight: 1.08,
+              letterSpacing: "-2px",
+              marginBottom: "24px",
+            }}
+          >
+            Cloud Engineer
+            <br />
+            <span style={{ color: C.accent }}>&</span> DevOps
+            <br />
+            <span style={{ color: C.muted, fontWeight: 700 }}>Associate.</span>
+          </h1>
 
-              {/* Available Badge */}
-              <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium text-gray-900">
-                    Available for hire
-                  </span>
+          <p
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "17px",
+              color: C.muted,
+              lineHeight: 1.75,
+              marginBottom: "40px",
+              maxWidth: "460px",
+            }}
+          >
+            Building resilient cloud infrastructure and automating everything
+            worth automating. Currently on a{" "}
+            <span style={{ color: C.accent, fontWeight: 600 }}>
+              100 Days of DevOps
+            </span>{" "}
+            challenge — one day, one skill, one step closer.
+          </p>
+
+          <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
+            <a
+              href="/resume"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 600,
+                fontSize: "14px",
+                padding: "13px 26px",
+                background: C.accent,
+                color: "#0a0b0f",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+                textDecoration: "none",
+                transition: "background 0.2s",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = "#fbbf24")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = C.accent)
+              }
+            >
+              <Download size={17} /> Download CV
+            </a>
+            <Link
+              to="/projects"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 600,
+                fontSize: "14px",
+                padding: "13px 26px",
+                background: "transparent",
+                color: C.text,
+                border: `1px solid ${C.border}`,
+                borderRadius: "8px",
+                cursor: "pointer",
+                textDecoration: "none",
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = C.accent;
+                e.currentTarget.style.color = C.accent;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = C.border;
+                e.currentTarget.style.color = C.text;
+              }}
+            >
+              View Projects <ArrowRight size={17} />
+            </Link>
+          </div>
+
+          {/* Stats */}
+          <div
+            style={{
+              display: "flex",
+              gap: "32px",
+              marginTop: "56px",
+              paddingTop: "40px",
+              borderTop: `1px solid ${C.border}`,
+            }}
+          >
+            {[
+              ["100", "Days Challenge"],
+              ["3+", "Servers Hardened"],
+              ["6+", "Tools Learned"],
+            ].map(([num, label]) => (
+              <div key={label}>
+                <div
+                  style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: "28px",
+                    fontWeight: 800,
+                    color: C.accent,
+                  }}
+                >
+                  {num}
                 </div>
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "12px",
+                    color: C.muted,
+                    marginTop: "2px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.8px",
+                  }}
+                >
+                  {label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right — Profile Image */}
+        <div style={{ position: "relative" }}>
+          <div
+            style={{
+              position: "absolute",
+              inset: "-2px",
+              borderRadius: "20px",
+              background: `linear-gradient(135deg, rgba(245,158,11,0.3), transparent 60%)`,
+              zIndex: 0,
+            }}
+          />
+          <div
+            style={{
+              position: "relative",
+              borderRadius: "18px",
+              overflow: "hidden",
+              border: `1px solid ${C.border}`,
+              zIndex: 1,
+            }}
+          >
+            <img
+              src={profileImage}
+              alt="Sagar Karki"
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+                display: "block",
+                filter: "brightness(0.92)",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: "20px",
+                left: "20px",
+                background: "rgba(10,11,15,0.9)",
+                backdropFilter: "blur(12px)",
+                border: `1px solid ${C.border}`,
+                padding: "10px 18px",
+                borderRadius: "999px",
+              }}
+            >
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "8px" }}
+              >
+                <div
+                  style={{
+                    width: "8px",
+                    height: "8px",
+                    borderRadius: "50%",
+                    background: "#22c55e",
+                    animation: "pulse 2s infinite",
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "13px",
+                    fontWeight: 500,
+                    color: C.text,
+                  }}
+                >
+                  Available for hire
+                </span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <style>{`
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+        @media (max-width: 768px) {
+          .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding: 100px 24px 60px !important; }
+        }
+      `}</style>
+    </section>
   );
 }
