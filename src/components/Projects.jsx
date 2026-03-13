@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Filter, Search, Grid, List, Star } from "lucide-react";
+import { Filter, Search, Grid, List, Star, Calendar } from "lucide-react";
 import Navbar from "./Navbar";
 import ProjectCard from "./ProjectCard";
 
