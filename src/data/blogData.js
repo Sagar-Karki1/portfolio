@@ -180,4 +180,132 @@ grep PermitRootLogin /etc/ssh/sshd_config
 
 The \`sed\` one-liner is the DevOps way — scriptable, fast, and perfect for automation. The \`vi\` method is your fallback when you need fine-grained control. Know both.`,
   },
+  {
+    id: 4,
+    day: "Day 05",
+    title: "SELinux Installation & Permanent Disable on App Server 2",
+    excerpt:
+      "A security audit required SELinux to be installed and permanently disabled on App Server 2. The tricky part? 'Permanently' means editing a config file — not running setenforce. Here's the difference and why it matters.",
+    tags: ["Linux", "SELinux", "Security", "yum"],
+    date: "Feb 23, 2025",
+    readTime: "7 min read",
+    content: `## The Task
+
+Following a security audit, the xFusionCorp Industries security team decided to begin rolling out SELinux across the Stratos Datacenter. For App Server 2, the requirements were:
+
+- Install the required SELinux packages
+- *Permanently* disable SELinux — it will be re-enabled after configuration
+- No reboot needed right now — a maintenance reboot is already planned tonight
+- Ignore the current runtime status — only the post-reboot state matters
+
+That word *permanently* is the key to this whole task.
+
+## What is SELinux?
+
+SELinux (Security-Enhanced Linux) is a kernel-level security module built into Linux. It enforces **mandatory access control (MAC)** policies on top of standard Linux permissions.
+
+Standard Linux permissions (chmod, chown) control what *users* can do. SELinux controls what *processes* can do — even if they are running as root. A compromised web server process can be prevented from reading \`/etc/passwd\` even if it runs as root.
+
+**The three SELinux modes:**
+
+- \`enforcing\` — SELinux is active and **blocking** all policy violations
+- \`permissive\` — SELinux is active but only **logging** violations, not blocking
+- \`disabled\` — SELinux is completely off
+
+## Steps Taken
+
+**Step 1 — SSH into App Server 2**
+
+\`\`\`bash
+ssh steve@stapp02
+\`\`\`
+
+**Step 2 — Install SELinux packages**
+
+\`\`\`bash
+sudo yum install -y selinux-policy selinux-policy-targeted libselinux-utils
+\`\`\`
+
+What each package provides:
+
+- \`selinux-policy\` — the base policy framework, the foundation SELinux needs to function
+- \`selinux-policy-targeted\` — the targeted policy ruleset, protects high-risk processes like httpd, sshd, mysqld
+- \`libselinux-utils\` — CLI tools: \`getenforce\`, \`setenforce\`, \`sestatus\`
+
+The \`-y\` flag automatically confirms all prompts so yum doesn't pause and wait for input.
+
+**Step 3 — Check the current config**
+
+\`\`\`bash
+cat /etc/selinux/config
+# SELINUX=enforcing
+# SELINUXTYPE=targeted
+\`\`\`
+
+**Step 4 — Permanently disable SELinux**
+
+\`\`\`bash
+sudo sed -i 's/^SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
+\`\`\`
+
+Or manually with vi:
+
+\`\`\`bash
+sudo vi /etc/selinux/config
+# Find: SELINUX=enforcing
+# Change to: SELINUX=disabled
+# Press Esc then :wq
+\`\`\`
+
+**Step 5 — Verify the config file change**
+
+\`\`\`bash
+grep SELINUX /etc/selinux/config
+# SELINUX=disabled
+# SELINUXTYPE=targeted
+\`\`\`
+
+**Step 6 — Check runtime state (still shows enabled — that is expected)**
+
+\`\`\`bash
+sestatus
+# SELinux status: enabled  <-- ignore this for now
+# Current mode: enforcing
+\`\`\`
+
+The task says to disregard this. After tonight's reboot, \`getenforce\` will return \`Disabled\`.
+
+## The Critical Distinction: setenforce vs /etc/selinux/config
+
+This is the most important concept in this task. There are two ways to control SELinux:
+
+**\`setenforce 0\`** — changes the *runtime* state only. Fast, immediate, but does NOT survive a reboot. The moment the server reboots, SELinux goes back to whatever the config file says.
+
+**\`/etc/selinux/config\`** — controls the *permanent* state. Applied on every boot. This is the only way to make a change that survives a reboot.
+
+The task specifically said the final status *after the reboot* should be disabled. Running \`setenforce 0\` would have passed the current check but failed after the maintenance reboot tonight — the config file would have brought enforcing back.
+
+\`\`\`bash
+# WRONG for this task — does not survive reboot:
+sudo setenforce 0
+
+# CORRECT — permanently applied after every reboot:
+sudo sed -i 's/^SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
+\`\`\`
+
+## Understanding /etc/selinux/config
+
+\`\`\`bash
+# This file has two important lines:
+
+SELINUX=disabled      # Controls ON/OFF and mode — this is what we changed
+SELINUXTYPE=targeted  # Controls which policy ruleset to load — leave this alone
+\`\`\`
+
+Only change the \`SELINUX=\` line. The \`SELINUXTYPE=\` line is about *which* policy to use, not *whether* SELinux is active.
+
+## Key Takeaway
+
+Reading the task carefully is the real skill here. The words *permanently* and *after reboot* were the signal that \`setenforce\` was the wrong tool — only editing \`/etc/selinux/config\` fits both requirements. In DevOps, knowing *why* you pick one tool over another is what separates guessing from understanding.`,
+  },
 ];
