@@ -55,7 +55,7 @@ const Navbar = () => {
             letterSpacing: "-0.5px",
           }}
         >
-          SK<span style={{ color: "#06b6d4" }}>.</span>
+          SAGAR KARKI<span style={{ color: "#06b6d4" }}>.</span>
         </span>
       </Link>
 
