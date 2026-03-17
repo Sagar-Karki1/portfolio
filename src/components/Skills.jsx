@@ -12,13 +12,13 @@ import {
 import Navbar from "./Navbar";
 
 const C = {
-  bg: "#0a0b0f",
-  surface: "#0d0f14",
-  border: "#1a1d27",
-  accent: "#f59e0b",
-  accentGlow: "rgba(245,158,11,0.1)",
-  text: "#e8eaf0",
-  muted: "#6b7590",
+  bg: "#080a0d",
+  surface: "#0d1117",
+  border: "#151a22",
+  accent: "#06b6d4",
+  accentGlow: "rgba(6,182,212,0.08)",
+  text: "#e2e8f0",
+  muted: "#64748b",
 };
 
 const skillCategories = [
@@ -99,7 +99,7 @@ const Skills = () => {
         <div style={{ marginBottom: "64px" }}>
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', sans-serif",
               fontSize: "12px",
               fontWeight: 600,
               color: C.accent,
@@ -112,9 +112,9 @@ const Skills = () => {
           </p>
           <h1
             style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Raleway', sans-serif",
               fontSize: "clamp(36px, 5vw, 52px)",
-              fontWeight: 800,
+              fontWeight: 900,
               color: C.text,
               letterSpacing: "-1.5px",
               marginBottom: "16px",
@@ -124,7 +124,7 @@ const Skills = () => {
           </h1>
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', sans-serif",
               fontSize: "16px",
               color: C.muted,
               maxWidth: "520px",
@@ -156,7 +156,7 @@ const Skills = () => {
                 transition: "border-color 0.2s",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(245,158,11,0.25)")
+                (e.currentTarget.style.borderColor = "rgba(6,182,212,0.25)")
               }
               onMouseLeave={(e) =>
                 (e.currentTarget.style.borderColor = C.border)
@@ -175,7 +175,7 @@ const Skills = () => {
                   style={{
                     padding: "8px",
                     background: C.accentGlow,
-                    border: "1px solid rgba(245,158,11,0.2)",
+                    border: "1px solid rgba(6,182,212,0.2)",
                     borderRadius: "8px",
                     color: C.accent,
                     display: "flex",
@@ -185,7 +185,7 @@ const Skills = () => {
                 </div>
                 <h3
                   style={{
-                    fontFamily: "'Syne', sans-serif",
+                    fontFamily: "'Raleway', sans-serif",
                     fontWeight: 700,
                     fontSize: "16px",
                     color: C.text,
@@ -215,10 +215,10 @@ const Skills = () => {
                     >
                       <span
                         style={{
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'Roboto', sans-serif",
                           fontSize: "14px",
                           fontWeight: 500,
-                          color: "#c8ccd8",
+                          color: "#cbd5e1",
                         }}
                       >
                         {skill.name}
@@ -245,7 +245,7 @@ const Skills = () => {
                         style={{
                           height: "100%",
                           width: `${skill.level}%`,
-                          background: `linear-gradient(90deg, ${C.accent}, #fbbf24)`,
+                          background: `linear-gradient(90deg, ${C.accent}, #22d3ee)`,
                           borderRadius: "999px",
                         }}
                       />
@@ -304,7 +304,7 @@ const Skills = () => {
               </div>
               <div
                 style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "'Raleway', sans-serif",
                   fontWeight: 700,
                   fontSize: "15px",
                   color: C.text,
@@ -315,7 +315,7 @@ const Skills = () => {
               </div>
               <div
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', sans-serif",
                   fontSize: "13px",
                   color: C.muted,
                   lineHeight: 1.6,

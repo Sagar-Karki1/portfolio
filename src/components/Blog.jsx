@@ -3,13 +3,13 @@ import Navbar from "./Navbar";
 import { blogPosts } from "../data/blogData";
 
 const C = {
-  bg: "#0a0b0f",
-  surface: "#0d0f14",
-  border: "#1a1d27",
-  accent: "#f59e0b",
-  accentGlow: "rgba(245,158,11,0.1)",
-  text: "#e8eaf0",
-  muted: "#6b7590",
+  bg: "#080a0d",
+  surface: "#0d1117",
+  border: "#151a22",
+  accent: "#06b6d4",
+  accentGlow: "rgba(6,182,212,0.08)",
+  text: "#e2e8f0",
+  muted: "#64748b",
 };
 
 const Blog = () => {
@@ -28,7 +28,7 @@ const Blog = () => {
         <div style={{ marginBottom: "64px" }}>
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', sans-serif",
               fontSize: "12px",
               fontWeight: 600,
               color: C.accent,
@@ -50,9 +50,9 @@ const Blog = () => {
           >
             <h1
               style={{
-                fontFamily: "'Syne', sans-serif",
+                fontFamily: "'Raleway', sans-serif",
                 fontSize: "clamp(36px, 5vw, 52px)",
-                fontWeight: 800,
+                fontWeight: 900,
                 color: C.text,
                 letterSpacing: "-1.5px",
                 lineHeight: 1.1,
@@ -64,7 +64,7 @@ const Blog = () => {
             </h1>
             <span
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontSize: "13px",
                 color: C.muted,
                 background: C.surface,
@@ -78,7 +78,7 @@ const Blog = () => {
           </div>
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', sans-serif",
               fontSize: "16px",
               color: C.muted,
               marginTop: "20px",
@@ -113,7 +113,7 @@ const Blog = () => {
                   transition: "all 0.2s",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(245,158,11,0.3)";
+                  e.currentTarget.style.borderColor = "rgba(6,182,212,0.3)";
                   e.currentTarget.style.transform = "translateX(6px)";
                 }}
                 onMouseLeave={(e) => {
@@ -125,9 +125,9 @@ const Blog = () => {
                 <div style={{ textAlign: "center", paddingTop: "4px" }}>
                   <div
                     style={{
-                      fontFamily: "'Syne', sans-serif",
+                      fontFamily: "'Raleway', sans-serif",
                       fontSize: "30px",
-                      fontWeight: 800,
+                      fontWeight: 900,
                       color: C.accent,
                       lineHeight: 1,
                     }}
@@ -136,7 +136,7 @@ const Blog = () => {
                   </div>
                   <div
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Roboto', sans-serif",
                       fontSize: "10px",
                       color: C.muted,
                       marginTop: "4px",
@@ -152,7 +152,7 @@ const Blog = () => {
                 <div>
                   <h2
                     style={{
-                      fontFamily: "'Syne', sans-serif",
+                      fontFamily: "'Raleway', sans-serif",
                       fontSize: "19px",
                       fontWeight: 700,
                       color: C.text,
@@ -164,7 +164,7 @@ const Blog = () => {
                   </h2>
                   <p
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Roboto', sans-serif",
                       fontSize: "14px",
                       color: C.muted,
                       lineHeight: 1.7,
@@ -185,12 +185,12 @@ const Blog = () => {
                       <span
                         key={tag}
                         style={{
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'Roboto', sans-serif",
                           fontSize: "11px",
                           fontWeight: 500,
                           color: C.accent,
                           background: C.accentGlow,
-                          border: "1px solid rgba(245,158,11,0.2)",
+                          border: "1px solid rgba(6,182,212,0.2)",
                           padding: "3px 10px",
                           borderRadius: "999px",
                         }}
@@ -201,9 +201,9 @@ const Blog = () => {
                     <span
                       style={{
                         marginLeft: "auto",
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', sans-serif",
                         fontSize: "12px",
-                        color: "rgba(107,117,144,0.6)",
+                        color: "rgba(100,116,139,0.6)",
                       }}
                     >
                       {post.date} · {post.readTime}
@@ -225,9 +225,9 @@ const Blog = () => {
           >
             <p
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontSize: "14px",
-                color: "rgba(107,117,144,0.5)",
+                color: "rgba(100,116,139,0.5)",
                 margin: 0,
               }}
             >

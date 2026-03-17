@@ -4,14 +4,14 @@ import { blogPosts } from "../data/blogData";
 import { ArrowLeft } from "lucide-react";
 
 const C = {
-  bg: "#0a0b0f",
-  surface: "#0d0f14",
-  border: "#1a1d27",
-  accent: "#f59e0b",
-  accentGlow: "rgba(245,158,11,0.1)",
-  text: "#e8eaf0",
-  muted: "#6b7590",
-  code: "#0f172a",
+  bg: "#080a0d",
+  surface: "#0d1117",
+  border: "#151a22",
+  accent: "#06b6d4",
+  accentGlow: "rgba(6,182,212,0.08)",
+  text: "#e2e8f0",
+  muted: "#64748b",
+  code: "#0a0f1a",
 };
 
 // Simple markdown renderer
@@ -28,7 +28,7 @@ function renderMarkdown(md) {
         <h2
           key={i}
           style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'Raleway', sans-serif",
             fontSize: "22px",
             fontWeight: 700,
             color: C.accent,
@@ -44,7 +44,7 @@ function renderMarkdown(md) {
         <p
           key={i}
           style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', sans-serif",
             fontWeight: 700,
             color: C.text,
             fontSize: "15px",
@@ -62,9 +62,9 @@ function renderMarkdown(md) {
             display: "flex",
             gap: "10px",
             margin: "6px 0",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', sans-serif",
             fontSize: "15px",
-            color: "#b0b8cc",
+            color: "#94a3b8",
             lineHeight: 1.7,
           }}
         >
@@ -95,7 +95,7 @@ function renderMarkdown(md) {
               display: "flex",
               gap: "6px",
               padding: "10px 16px",
-              background: "#1e293b",
+              background: "#0d1520",
               borderBottom: `1px solid ${C.border}`,
             }}
           >
@@ -127,17 +127,17 @@ function renderMarkdown(md) {
                 key={ci}
                 style={{
                   color: cl.trim().startsWith("#")
-                    ? "#64748b"
+                    ? "#475569"
                     : cl.startsWith("sudo") ||
                         cl.startsWith("ssh") ||
                         cl.startsWith("grep") ||
                         cl.startsWith("systemctl")
-                      ? "#7dd3fc"
+                      ? "#67e8f9"
                       : cl.includes("no") && cl.includes("PermitRoot")
                         ? "#86efac"
                         : cl.includes("yes") && cl.includes("PermitRoot")
                           ? "#fca5a5"
-                          : "#a8b4d0",
+                          : "#94a3b8",
                 }}
               >
                 {cl || " "}
@@ -155,10 +155,10 @@ function renderMarkdown(md) {
         <p
           key={i}
           style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', sans-serif",
             fontSize: "16px",
             lineHeight: 1.85,
-            color: "#b0b8cc",
+            color: "#94a3b8",
             margin: "12px 0",
           }}
         >
@@ -170,8 +170,8 @@ function renderMarkdown(md) {
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: "13.5px",
-                    background: "#1a1e28",
-                    color: "#f59e0b",
+                    background: "#111827",
+                    color: "#06b6d4",
                     padding: "2px 7px",
                     borderRadius: "4px",
                   }}
@@ -187,7 +187,7 @@ function renderMarkdown(md) {
               );
             if (part.startsWith("*") && part.endsWith("*"))
               return (
-                <em key={pi} style={{ color: "#d4b896" }}>
+                <em key={pi} style={{ color: "#7dd3fc" }}>
                   {part.slice(1, -1)}
                 </em>
               );
@@ -212,7 +212,7 @@ const BlogPost = () => {
         <div style={{ textAlign: "center", padding: "200px 32px" }}>
           <h2
             style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Raleway', sans-serif",
               color: C.text,
               fontSize: "32px",
             }}
@@ -244,7 +244,7 @@ const BlogPost = () => {
             display: "inline-flex",
             alignItems: "center",
             gap: "6px",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', sans-serif",
             fontSize: "13px",
             color: C.muted,
             textDecoration: "none",
@@ -264,7 +264,7 @@ const BlogPost = () => {
             alignItems: "center",
             gap: "8px",
             background: C.accentGlow,
-            border: "1px solid rgba(245,158,11,0.25)",
+            border: "1px solid rgba(6,182,212,0.22)",
             borderRadius: "999px",
             padding: "5px 14px",
             marginBottom: "22px",
@@ -272,7 +272,7 @@ const BlogPost = () => {
         >
           <span
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', sans-serif",
               fontSize: "11px",
               color: C.accent,
               fontWeight: 600,
@@ -287,7 +287,7 @@ const BlogPost = () => {
         {/* Title */}
         <h1
           style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'Raleway', sans-serif",
             fontSize: "clamp(28px, 4.5vw, 44px)",
             fontWeight: 800,
             color: C.text,
@@ -317,14 +317,14 @@ const BlogPost = () => {
                 width: "36px",
                 height: "36px",
                 borderRadius: "50%",
-                background: `linear-gradient(135deg, ${C.accent}, #92400e)`,
+                background: `linear-gradient(135deg, ${C.accent}, #0891b2)`,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontFamily: "'Syne', sans-serif",
+                fontFamily: "'Raleway', sans-serif",
                 fontWeight: 800,
                 fontSize: "15px",
-                color: "#0a0b0f",
+                color: "#080a0d",
               }}
             >
               S
@@ -332,7 +332,7 @@ const BlogPost = () => {
             <div>
               <div
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', sans-serif",
                   fontWeight: 600,
                   fontSize: "14px",
                   color: C.text,
@@ -342,7 +342,7 @@ const BlogPost = () => {
               </div>
               <div
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', sans-serif",
                   fontSize: "12px",
                   color: C.muted,
                 }}
@@ -363,11 +363,11 @@ const BlogPost = () => {
               <span
                 key={tag}
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', sans-serif",
                   fontSize: "11px",
                   color: C.accent,
                   background: C.accentGlow,
-                  border: "1px solid rgba(245,158,11,0.2)",
+                  border: "1px solid rgba(6,182,212,0.2)",
                   padding: "3px 10px",
                   borderRadius: "999px",
                 }}
@@ -407,7 +407,7 @@ const BlogPost = () => {
                   cursor: "pointer",
                 }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor = "rgba(245,158,11,0.3)")
+                  (e.currentTarget.style.borderColor = "rgba(6,182,212,0.3)")
                 }
                 onMouseLeave={(e) =>
                   (e.currentTarget.style.borderColor = C.border)
@@ -415,7 +415,7 @@ const BlogPost = () => {
               >
                 <div
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontSize: "11px",
                     color: C.muted,
                     marginBottom: "6px",
@@ -427,7 +427,7 @@ const BlogPost = () => {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontSize: "14px",
                     color: C.text,
                     fontWeight: 600,
@@ -457,7 +457,7 @@ const BlogPost = () => {
                   textAlign: "right",
                 }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor = "rgba(245,158,11,0.3)")
+                  (e.currentTarget.style.borderColor = "rgba(6,182,212,0.3)")
                 }
                 onMouseLeave={(e) =>
                   (e.currentTarget.style.borderColor = C.border)
@@ -465,7 +465,7 @@ const BlogPost = () => {
               >
                 <div
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontSize: "11px",
                     color: C.muted,
                     marginBottom: "6px",
@@ -477,7 +477,7 @@ const BlogPost = () => {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontSize: "14px",
                     color: C.text,
                     fontWeight: 600,
