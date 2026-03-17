@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import profileImage from "../assets/profile.png";
 
 const C = {
-  bg: "#0a0b0f",
-  surface: "#0d0f14",
-  border: "#1a1d27",
-  accent: "#f59e0b",
-  text: "#e8eaf0",
-  muted: "#6b7590",
+  bg: "#080a0d",
+  surface: "#0d1117",
+  border: "#151a22",
+  accent: "#06b6d4",
+  text: "#e2e8f0",
+  muted: "#64748b",
 };
 
 export default function Hero() {
@@ -35,7 +35,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Amber glow */}
+      {/* Cyan glow */}
       <div
         style={{
           position: "absolute",
@@ -45,7 +45,7 @@ export default function Hero() {
           height: "500px",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 65%)",
           pointerEvents: "none",
         }}
       />
@@ -58,7 +58,7 @@ export default function Hero() {
           height: "300px",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(14,165,233,0.05) 0%, transparent 65%)",
           pointerEvents: "none",
         }}
       />
@@ -85,8 +85,8 @@ export default function Hero() {
               display: "inline-flex",
               alignItems: "center",
               gap: "8px",
-              background: "rgba(245,158,11,0.1)",
-              border: "1px solid rgba(245,158,11,0.25)",
+              background: "rgba(6,182,212,0.08)",
+              border: "1px solid rgba(6,182,212,0.22)",
               borderRadius: "999px",
               padding: "6px 16px",
               marginBottom: "32px",
@@ -104,7 +104,7 @@ export default function Hero() {
             />
             <span
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontSize: "12px",
                 color: C.accent,
                 fontWeight: 600,
@@ -118,9 +118,9 @@ export default function Hero() {
 
           <h1
             style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Raleway', sans-serif",
               fontSize: "clamp(42px, 5.5vw, 70px)",
-              fontWeight: 800,
+              fontWeight: 900,
               color: C.text,
               lineHeight: 1.08,
               letterSpacing: "-2px",
@@ -136,7 +136,7 @@ export default function Hero() {
 
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', sans-serif",
               fontSize: "17px",
               color: C.muted,
               lineHeight: 1.75,
@@ -159,12 +159,12 @@ export default function Hero() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontWeight: 600,
                 fontSize: "14px",
                 padding: "13px 26px",
                 background: C.accent,
-                color: "#0a0b0f",
+                color: "#080a0d",
                 border: "none",
                 borderRadius: "8px",
                 cursor: "pointer",
@@ -172,7 +172,7 @@ export default function Hero() {
                 transition: "background 0.2s",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "#fbbf24")
+                (e.currentTarget.style.background = "#22d3ee")
               }
               onMouseLeave={(e) =>
                 (e.currentTarget.style.background = C.accent)
@@ -186,7 +186,7 @@ export default function Hero() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontWeight: 600,
                 fontSize: "14px",
                 padding: "13px 26px",
@@ -229,7 +229,7 @@ export default function Hero() {
               <div key={label}>
                 <div
                   style={{
-                    fontFamily: "'Syne', sans-serif",
+                    fontFamily: "'Raleway', sans-serif",
                     fontSize: "28px",
                     fontWeight: 800,
                     color: C.accent,
@@ -239,7 +239,7 @@ export default function Hero() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontSize: "12px",
                     color: C.muted,
                     marginTop: "2px",
@@ -261,7 +261,7 @@ export default function Hero() {
               position: "absolute",
               inset: "-2px",
               borderRadius: "20px",
-              background: `linear-gradient(135deg, rgba(245,158,11,0.3), transparent 60%)`,
+              background: `linear-gradient(135deg, rgba(6,182,212,0.25), transparent 60%)`,
               zIndex: 0,
             }}
           />
@@ -290,7 +290,7 @@ export default function Hero() {
                 position: "absolute",
                 bottom: "20px",
                 left: "20px",
-                background: "rgba(10,11,15,0.9)",
+                background: "rgba(8,10,13,0.9)",
                 backdropFilter: "blur(12px)",
                 border: `1px solid ${C.border}`,
                 padding: "10px 18px",
@@ -311,7 +311,7 @@ export default function Hero() {
                 />
                 <span
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontSize: "13px",
                     fontWeight: 500,
                     color: C.text,

@@ -38,9 +38,9 @@ const Navbar = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        background: scrolled ? "rgba(10,11,15,0.95)" : "transparent",
+        background: scrolled ? "rgba(8,10,13,0.96)" : "transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
-        borderBottom: scrolled ? "1px solid #1a1d27" : "none",
+        borderBottom: scrolled ? "1px solid #151a22" : "none",
         transition: "all 0.3s ease",
       }}
     >
@@ -48,14 +48,14 @@ const Navbar = () => {
       <Link to="/" style={{ textDecoration: "none" }}>
         <span
           style={{
-            fontFamily: "'Syne', sans-serif",
-            fontWeight: 800,
+            fontFamily: "'Raleway', sans-serif",
+            fontWeight: 900,
             fontSize: "20px",
-            color: "#e8eaf0",
+            color: "#e2e8f0",
             letterSpacing: "-0.5px",
           }}
         >
-          SK<span style={{ color: "#f59e0b" }}>.</span>
+          SAGAR KARKI<span style={{ color: "#06b6d4" }}>.</span>
         </span>
       </Link>
 
@@ -70,21 +70,21 @@ const Navbar = () => {
             to={href}
             style={{
               textDecoration: "none",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', sans-serif",
               fontSize: "13px",
               fontWeight: 500,
-              color: isActive(href) ? "#f59e0b" : "#6b7590",
+              color: isActive(href) ? "#06b6d4" : "#64748b",
               textTransform: "uppercase",
               letterSpacing: "1.5px",
               borderBottom: isActive(href)
-                ? "1px solid #f59e0b"
+                ? "1px solid #06b6d4"
                 : "1px solid transparent",
               paddingBottom: "2px",
               transition: "color 0.2s",
             }}
-            onMouseEnter={(e) => (e.target.style.color = "#e8eaf0")}
+            onMouseEnter={(e) => (e.target.style.color = "#e2e8f0")}
             onMouseLeave={(e) =>
-              (e.target.style.color = isActive(href) ? "#f59e0b" : "#6b7590")
+              (e.target.style.color = isActive(href) ? "#06b6d4" : "#64748b")
             }
           >
             {label}
@@ -93,19 +93,19 @@ const Navbar = () => {
         <a
           href="mailto:sagarkarki@email.com"
           style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', sans-serif",
             fontWeight: 600,
             fontSize: "13px",
             padding: "8px 20px",
-            background: "#f59e0b",
-            color: "#0a0b0f",
+            background: "#06b6d4",
+            color: "#080a0d",
             borderRadius: "6px",
             textDecoration: "none",
             letterSpacing: "0.3px",
             transition: "background 0.2s",
           }}
-          onMouseEnter={(e) => (e.target.style.background = "#fbbf24")}
-          onMouseLeave={(e) => (e.target.style.background = "#f59e0b")}
+          onMouseEnter={(e) => (e.target.style.background = "#22d3ee")}
+          onMouseLeave={(e) => (e.target.style.background = "#06b6d4")}
         >
           Contact
         </a>
@@ -118,7 +118,7 @@ const Navbar = () => {
           background: "none",
           border: "none",
           cursor: "pointer",
-          color: "#e8eaf0",
+          color: "#e2e8f0",
           display: "none",
         }}
         className="show-mobile"
@@ -134,8 +134,8 @@ const Navbar = () => {
             top: "64px",
             left: 0,
             right: 0,
-            background: "#0d0f14",
-            borderBottom: "1px solid #1a1d27",
+            background: "#0d1117",
+            borderBottom: "1px solid #151a22",
             padding: "20px 40px",
             display: "flex",
             flexDirection: "column",
@@ -149,9 +149,9 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               style={{
                 textDecoration: "none",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontSize: "15px",
-                color: "#e8eaf0",
+                color: "#e2e8f0",
               }}
             >
               {label}
@@ -161,9 +161,9 @@ const Navbar = () => {
       )}
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800;900&family=Roboto:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; }
-        body { margin: 0; background: #0a0b0f; }
+        body { margin: 0; background: #080a0d; }
         @media (max-width: 768px) {
           .hidden-mobile { display: none !important; }
           .show-mobile { display: block !important; }

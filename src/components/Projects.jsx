@@ -114,24 +114,33 @@ export default function Projects() {
   });
 
   return (
-    <div className="bg-[#0a0b0f] min-h-screen">
+    <div className="bg-[#080a0d] min-h-screen">
       <Navbar />
       <div className="max-w-6xl mx-auto px-8 md:px-12 pt-28 pb-24">
         {/* Header */}
         <div className="mb-12">
-          <span className="font-sans text-[11px] font-bold text-amber-500 uppercase tracking-[3px] mb-4 block">
+          <span
+            className="text-[11px] font-bold text-cyan-400 uppercase tracking-[3px] mb-4 block"
+            style={{ fontFamily: "'Roboto', sans-serif" }}
+          >
             Projects
           </span>
           <div className="flex items-end justify-between flex-wrap gap-4">
             <h1
-              className="font-sans font-extrabold text-gray-100 tracking-tight"
-              style={{ fontSize: "clamp(36px, 5vw, 52px)" }}
+              className="font-extrabold text-gray-100 tracking-tight"
+              style={{
+                fontSize: "clamp(36px, 5vw, 52px)",
+                fontFamily: "'Raleway', sans-serif",
+              }}
             >
               What I'm building.
             </h1>
             <div className="flex items-center gap-2 text-slate-500">
               <Calendar size={14} />
-              <span className="font-sans text-sm">
+              <span
+                className="text-sm"
+                style={{ fontFamily: "'Roboto', sans-serif" }}
+              >
                 {new Date().getFullYear()}
               </span>
             </div>
@@ -141,7 +150,7 @@ export default function Projects() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { val: projects.length, label: "Total", color: "text-amber-500" },
+            { val: projects.length, label: "Total", color: "text-cyan-400" },
             {
               val: projects.filter((p) => p.status === "Completed").length,
               label: "Completed",
@@ -155,25 +164,31 @@ export default function Projects() {
             {
               val: new Set(projects.flatMap((p) => p.techStack)).size,
               label: "Technologies",
-              color: "text-indigo-400",
+              color: "text-sky-400",
             },
           ].map(({ val, label, color }) => (
             <div
               key={label}
-              className="p-5 bg-[#0d0f14] border border-[#1a1d27] rounded-xl text-center"
+              className="p-5 bg-[#0d1117] border border-[#151a22] rounded-xl text-center"
             >
               <div
-                className={`font-sans font-extrabold text-3xl tracking-tight mb-1 ${color}`}
+                className={`font-extrabold text-3xl tracking-tight mb-1 ${color}`}
+                style={{ fontFamily: "'Raleway', sans-serif" }}
               >
                 {val}
               </div>
-              <div className="font-sans text-slate-500 text-xs">{label}</div>
+              <div
+                className="text-slate-500 text-xs"
+                style={{ fontFamily: "'Roboto', sans-serif" }}
+              >
+                {label}
+              </div>
             </div>
           ))}
         </div>
 
         {/* Controls */}
-        <div className="flex flex-wrap items-center gap-4 p-5 bg-[#0d0f14] border border-[#1a1d27] rounded-2xl mb-10">
+        <div className="flex flex-wrap items-center gap-4 p-5 bg-[#0d1117] border border-[#151a22] rounded-2xl mb-10">
           {/* Search */}
           <div className="relative flex-1 min-w-48">
             <Search
@@ -185,7 +200,8 @@ export default function Projects() {
               placeholder="Search projects..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 bg-[#0a0b0f] border border-[#1a1d27] text-gray-200 font-sans text-sm rounded-lg outline-none focus:border-amber-500 transition-colors placeholder-slate-600"
+              className="w-full pl-9 pr-4 py-2.5 bg-[#080a0d] border border-[#151a22] text-gray-200 text-sm rounded-lg outline-none focus:border-cyan-500 transition-colors placeholder-slate-600"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
             />
           </div>
 
@@ -195,7 +211,8 @@ export default function Projects() {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="px-4 py-2.5 bg-[#0a0b0f] border border-[#1a1d27] text-gray-200 font-sans text-sm rounded-lg outline-none focus:border-amber-500 transition-colors cursor-pointer"
+              className="px-4 py-2.5 bg-[#080a0d] border border-[#151a22] text-gray-200 text-sm rounded-lg outline-none focus:border-cyan-500 transition-colors cursor-pointer"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
             >
               {categories.map((c) => (
                 <option key={c} value={c}>
@@ -206,7 +223,7 @@ export default function Projects() {
           </div>
 
           {/* View toggle */}
-          <div className="flex bg-[#0a0b0f] border border-[#1a1d27] rounded-lg overflow-hidden">
+          <div className="flex bg-[#080a0d] border border-[#151a22] rounded-lg overflow-hidden">
             {[
               { mode: "grid", Icon: Grid },
               { mode: "list", Icon: List },
@@ -215,7 +232,7 @@ export default function Projects() {
                 key={mode}
                 onClick={() => setView(mode)}
                 className={`p-2.5 border-none cursor-pointer transition-all duration-200 flex items-center
-                  ${view === mode ? "bg-amber-500/10 text-amber-500" : "bg-transparent text-slate-500 hover:text-gray-300"}`}
+                  ${view === mode ? "bg-cyan-500/10 text-cyan-400" : "bg-transparent text-slate-500 hover:text-gray-300"}`}
               >
                 <Icon size={15} />
               </button>
@@ -227,8 +244,11 @@ export default function Projects() {
         {projects.filter((p) => p.featured).length > 0 && (
           <div className="mb-12">
             <div className="flex items-center gap-2 mb-6">
-              <Star size={16} className="text-amber-500" />
-              <h2 className="font-sans font-bold text-gray-100 text-lg">
+              <Star size={16} className="text-cyan-400" />
+              <h2
+                className="font-bold text-gray-100 text-lg"
+                style={{ fontFamily: "'Raleway', sans-serif" }}
+              >
                 Featured
               </h2>
             </div>
@@ -243,7 +263,10 @@ export default function Projects() {
         )}
 
         {/* All Projects */}
-        <h2 className="font-sans font-bold text-gray-100 text-lg mb-6">
+        <h2
+          className="font-bold text-gray-100 text-lg mb-6"
+          style={{ fontFamily: "'Raleway', sans-serif" }}
+        >
           All Projects
         </h2>
         <div
@@ -258,10 +281,16 @@ export default function Projects() {
         {filtered.length === 0 && (
           <div className="text-center py-20">
             <div className="text-6xl mb-5">🔍</div>
-            <h3 className="font-sans font-bold text-gray-100 text-xl mb-3">
+            <h3
+              className="font-bold text-gray-100 text-xl mb-3"
+              style={{ fontFamily: "'Raleway', sans-serif" }}
+            >
               No projects found
             </h3>
-            <p className="font-sans text-slate-500 text-sm mb-6">
+            <p
+              className="text-slate-500 text-sm mb-6"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
+            >
               Try adjusting your search or filter
             </p>
             <button
@@ -269,7 +298,8 @@ export default function Projects() {
                 setSearch("");
                 setCategory("All");
               }}
-              className="px-6 py-2.5 bg-amber-500 text-[#0a0b0f] font-sans font-bold text-sm rounded-lg hover:bg-amber-400 transition-colors border-none cursor-pointer"
+              className="px-6 py-2.5 bg-cyan-500 text-[#080a0d] font-bold text-sm rounded-lg hover:bg-cyan-400 transition-colors border-none cursor-pointer"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
             >
               Clear Filters
             </button>
